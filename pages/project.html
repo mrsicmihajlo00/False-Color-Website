@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Project — Mihajlo Mršić</title>
+  <meta name="description" content="Project by Mihajlo Mršić — Video Editor and Colorist">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><img src="../logo.png" alt="False Color" class="nav-logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">PROJECTS</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+      <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html">PROJECTS</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </div>
+
+  <main class="project-page">
+
+    <!-- Back link -->
+    <a href="../index.html" class="back-link">← All Projects</a>
+
+    <!-- Video embed -->
+    <div class="project-video" id="projectVideo">
+      <!-- filled by JS -->
+    </div>
+
+    <!-- Project info -->
+    <div class="project-info" id="projectInfo">
+      <!-- filled by JS -->
+    </div>
+
+    <!-- You may also like -->
+    <section class="also-like" id="alsoLike">
+      <h3 class="also-title">You May Also Like</h3>
+      <div class="also-grid" id="alsoGrid">
+        <!-- filled by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Mihajlo Mršić. All rights reserved.</span>
+      <a href="contact.html">Get in touch</a>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
+
+  <script src="../js/projects.js"></script>
+  <script src="../js/project-page.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

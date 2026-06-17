@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Mihajlo Mršić</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><img src="../logo.png" alt="False Color" class="nav-logo-img"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">PROJECTS</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="contact.html" class="active">CONTACT</a></li>
+      </ul>
+      <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="../index.html">PROJECTS</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </div>
+
+  <main class="contact-page">
+    <div class="contact-inner">
+
+      <div class="contact-header">
+        <span class="eyebrow">Get in Touch</span>
+        <h1>Let's work<br>together.</h1>
+        <p>Need a video editor or colorist? Reach out below or email directly.</p>
+      </div>
+
+      <div class="contact-split">
+
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="ci-label">EMAIL</span>
+            <a href="mailto:falsecolor.prod@gmail.com" class="ci-value">falsecolor.prod@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="ci-label">BASED IN</span>
+            <span class="ci-value">Serbia</span>
+          </div>
+          <div class="contact-item">
+            <span class="ci-label">AVAILABLE FOR</span>
+            <span class="ci-value">Remote & On-site Projects</span>
+          </div>
+        </div>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">NAME *</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">EMAIL *</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">SUBJECT *</label>
+            <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+          </div>
+          <div class="form-group">
+            <label for="message">MESSAGE *</label>
+            <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            <span id="btnText">Send Message</span>
+          </button>
+          <p class="form-status" id="formStatus"></p>
+        </form>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Mihajlo Mršić. All rights reserved.</span>
+      <a href="contact.html">Get in touch</a>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/contact.js"></script>
+</body>
+</html>

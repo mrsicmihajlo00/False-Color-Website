@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>False Color — Mihajlo Mršić</title>
+  <meta name="description" content="False Color — Video Editor and Colorist. Portfolio of commercial, documentary, film and music video work.">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" alt="False Color" class="nav-logo-img">
+        
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">PROJECTS</a></li>
+        <li><a href="pages/about.html">ABOUT</a></li>
+        <li><a href="pages/contact.html">CONTACT</a></li>
+      </ul>
+      <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="index.html">PROJECTS</a></li>
+      <li><a href="pages/about.html">ABOUT</a></li>
+      <li><a href="pages/contact.html">CONTACT</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <section class="grid-section">
+      <div class="project-grid" id="projectGrid">
+        <!-- Cards rendered by JS below -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© <span id="year"></span> False Color. All rights reserved.</span>
+      <a href="pages/contact.html">Get in touch</a>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">&#8593;</button>
+
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  // Render grid cards, then asynchronously fill in titles
+  (async function() {
+    const grid = document.getElementById('projectGrid');
+
+    async function fetchTitle(project) {
+      if (project.titleOverride) return project.titleOverride;
+      try {
+        if (project.platform === 'youtube') {
+          const cleanId = project.embed.split('?')[0];
+          const res = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${cleanId}&format=json`);
+          if (res.ok) { const d = await res.json(); return d.title; }
+        } else if (project.platform === 'vimeo') {
+          const res = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${project.embed}`);
+          if (res.ok) { const d = await res.json(); return d.title; }
+        }
+      } catch(e) {}
+      return project.titleOverride || '';
+    }
+
+    // Render cards immediately with placeholder title, then update
+    // Platform placeholder SVGs for cards without a real thumbnail
+    const PLACEHOLDERS = {
+      facebook: `<div class="card-platform-placeholder card-platform-facebook">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="24" fill="#1877F2"/><path d="M32 24h-5v14h-6V24h-3v-5h3v-3c0-4 2-6 6-6h4v5h-3c-1 0-1 .5-1 1v3h4l-1 5z" fill="#fff"/></svg>
+        <span>Facebook Video</span>
+      </div>`,
+      instagram: `<div class="card-platform-placeholder card-platform-instagram">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="12" fill="url(#ig)"/><defs><linearGradient id="ig" x1="0" y1="48" x2="48" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#F9CE34"/><stop offset=".3" stop-color="#EE2A7B"/><stop offset="1" stop-color="#6228D7"/></linearGradient></defs><rect x="13" y="13" width="22" height="22" rx="6" stroke="#fff" stroke-width="2.5" fill="none"/><circle cx="24" cy="24" r="5" stroke="#fff" stroke-width="2.5" fill="none"/><circle cx="30.5" cy="17.5" r="1.5" fill="#fff"/></svg>
+        <span>Instagram Reel</span>
+      </div>`
+    };
+
+    PROJECTS.forEach(p => {
+      const a = document.createElement('a');
+      // All cards with an externalUrl open in a new tab (YouTube, Facebook, Instagram)
+      if (p.externalUrl) {
+        a.href = p.externalUrl;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+      } else {
+        a.href = `pages/project.html?id=${p.id}`;
+      }
+      a.className = 'card';
+      // Portrait thumbnails shown letterboxed (object-fit: contain) inside 16:9 container
+      const isPortraitThumb = p.thumbAspect === '9/16' || p.platform === 'external';
+      const imgStyle = isPortraitThumb ? 'style="object-fit:contain;background:#000"' : '';
+      const thumbContent = p.thumb
+        ? `<img src="${p.thumb}" alt="${p.titleOverride || ''}" loading="lazy" ${imgStyle}>`
+        : (PLACEHOLDERS[p.platform] || '');
+      // External cards show a link icon instead of play button
+      const btnIcon = p.platform === 'external'
+        ? `<span class="play-btn" style="font-size:16px">&#8599;</span>`
+        : `<span class="play-btn">&#9654;</span>`;
+      a.innerHTML = `
+        <div class="card-thumb">
+          ${thumbContent}
+          <div class="card-overlay">
+            ${btnIcon}
+            <div class="card-hover-title">
+              <span class="card-hover-type">${p.type}</span>
+              <span class="card-hover-name" id="title-${p.id}">${p.titleOverride || '…'}</span>
+            </div>
+          </div>
+        </div>`;
+      grid.appendChild(a);
+    });
+
+    // Now fetch all titles in parallel and update
+    PROJECTS.forEach(async p => {
+      const title = await fetchTitle(p);
+      const el = document.getElementById(`title-${p.id}`);
+      if (el && title) el.textContent = title;
+    });
+  })();
+  </script>
+</body>
+</html>

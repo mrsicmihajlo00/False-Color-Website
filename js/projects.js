@@ -44,16 +44,6 @@ const PROJECTS = [
     related: ["p03", "p05", "p06"]
   },
   {
-    id: "p05",
-    titleOverride: "The Assistant | Your time matters!",
-    type: "D.I.T. · COLORIST",
-    thumb: "https://img.youtube.com/vi/Lznc7p43nos/maxresdefault.jpg",
-    platform: "youtube",
-    embed: "Lznc7p43nos?si=JPDcvtLuCn66347d",
-    description: "Role: D.I.T., Colorist",
-    related: ["p01", "p04", "p06"]
-  },
-  {
     id: "p06",
     titleOverride: null,
     type: "1ST AC",
@@ -62,6 +52,16 @@ const PROJECTS = [
     embed: "1002244883",
     description: "Role: 1st AC",
     related: ["p04", "p05", "p07"]
+  },
+  {
+    id: "p05",
+    titleOverride: "The Assistant | Your time matters!",
+    type: "D.I.T. · COLORIST",
+    thumb: "https://img.youtube.com/vi/Lznc7p43nos/maxresdefault.jpg",
+    platform: "youtube",
+    embed: "Lznc7p43nos?si=JPDcvtLuCn66347d",
+    description: "Role: D.I.T., Colorist",
+    related: ["p01", "p04", "p06"]
   },
   {
     id: "p07",
@@ -122,6 +122,36 @@ const PROJECTS = [
     embed: "pQiSj7P95tA?si=Onro25RUWlWhUsRR",
     description: "Role: Video Editor, Colorist, DP",
     related: ["p02", "p10", "p11"]
+  },
+  {
+    id: "p15",
+    titleOverride: null,
+    type: "VIDEO EDITOR · COLORIST",
+    thumb: "https://img.youtube.com/vi/uvl0XwCaNvI/maxresdefault.jpg",
+    platform: "youtube",
+    embed: "uvl0XwCaNvI",
+    description: "Role: Video Editor, Colorist",
+    related: ["p12", "p16", "p17"]
+  },
+  {
+    id: "p16",
+    titleOverride: null,
+    type: "VIDEO EDITOR · COLORIST",
+    thumb: "https://img.youtube.com/vi/NX27W76OQtA/maxresdefault.jpg",
+    platform: "youtube",
+    embed: "NX27W76OQtA",
+    description: "Role: Video Editor, Colorist",
+    related: ["p12", "p15", "p17"]
+  },
+  {
+    id: "p17",
+    titleOverride: null,
+    type: "VIDEO EDITOR · COLORIST",
+    thumb: "https://img.youtube.com/vi/NTCYykqMrS0/maxresdefault.jpg",
+    platform: "youtube",
+    embed: "NTCYykqMrS0",
+    description: "Role: Video Editor, Colorist",
+    related: ["p12", "p15", "p16"]
   },
   {
     id: "p13",
